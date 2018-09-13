@@ -1,6 +1,5 @@
 ## 剑指offer
 
-以前用的Java实现，现在用Python实现,主要掌握Python语言特性。
 
 数据结构和算法
 
@@ -32,22 +31,54 @@ public class Solution{
     }
 } 
 ```
-#### Python实现
+
+### 替换空格
+
+#### 题目描述
+
+请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。
+
+-[替换空格](https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&tqId=11155&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking)
+
+
+#### Java实现
 
 ```
-class Solution:
-    def Find(self, target, array):
-        tR = len(array)-1
-        tC1 = len(array[0])-1
-        tC = 0
-        while tC<=tC1 and tR>=0:
-            if target<array[tR][tC]:
-                tR -= 1
-                //Python不支持i++
-            elif target>array[tR][tC]:
-                tC += 1
-            else:
-                return True
-        return False
+public class Solution {
+    public String replaceSpace(StringBuffer str) {
+    	if(str == null){
+            return null;
+        }
+        int blankNum = 0;
+        int length = str.length();
+        for(int i = 0; i < length; i++){
+            if(str.charAt(i) == ' '){
+                blankNum++;
+            }
+        }
+        int newLength = length + 2 * blankNum;
+        char[] newChars = new char[newLength];
+        int index = newLength - 1;
+        for( int j = length - 1; j >= 0; j --){
+            if(str.charAt(j) == ' '){
+                newChars[index--] = '0';
+                newChars[index--] = '2';
+                newChars[index--] = '%';
+            }
+            else {
+                newChars[index--] = str.charAt(j);
+            }
+        }
+        return new String(newChars);
+    }
+}
 ```
 
+### 从尾到头打印链表
+
+输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。
+
+#### Java实现
+
+```
+```
