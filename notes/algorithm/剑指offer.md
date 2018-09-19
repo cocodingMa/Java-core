@@ -132,10 +132,34 @@ class Solution:
 
 #### Java实现
 
+采用很简洁的递归实现，递归的本质是使用堆栈结构。
+
 ```
+public class Solution {
+    ArrayList<Integer> arrayList=new ArrayList<Integer>();
+    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+        if(listNode!=null){
+            this.printListFromTailToHead(listNode.next);
+            arrayList.add(listNode.val);
+        }
+        return arrayList;
+    }
+}
 ```
 
 #### Python实现
 
 ```
+# -*- coding:utf-8 -*-
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+ 
+class Solution:
+    def printListFromTailToHead(self, listNode):
+        # write code here
+        if listNode is None:
+            return []
+        return self.printListFromTailToHead(listNode.next)+[listNode.val]
 ```
