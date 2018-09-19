@@ -17,6 +17,10 @@
         - [题目描述](#题目描述-1)
         - [Java实现](#java实现-2)
         - [Python实现](#python实现-2)
+    - [重建二叉树](#重建二叉树)
+        - [题目描述](#题目描述-2)
+        - [Java实现](#java实现-3)
+        - [Python实现](#python实现-3)
 
 <!-- /TOC -->
 
@@ -25,8 +29,6 @@
 #### 题目描述：
 
 在一个二维数组中（每个一维数组的长度相同），每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数
-
-[二维数组中的查找](https://www.nowcoder.com/practice/abc3fe2ce8e146608e868a70efebf62e?tpId=13&tqId=11154&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking)
 
 #### Java实现
 
@@ -73,9 +75,6 @@ class Solution:
 #### 题目描述
 
 请实现一个函数，将一个字符串中的每个空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。
-
-[替换空格](https://www.nowcoder.com/practice/4060ac7e3e404ad1a894ef3e17650423?tpId=13&tqId=11155&tPage=1&rp=1&ru=/ta/coding-interviews&qru=/ta/coding-interviews/question-ranking)
-
 
 #### Java实现
 
@@ -146,7 +145,6 @@ class Solution:
 
 输入一个链表，按链表值从尾到头的顺序返回一个ArrayList。
 
-[从尾到头打印链表](https://www.nowcoder.com/practice/d0267f7f55b3412ba93bd35cfa8e8035?tpId=13&tqId=11156&tPage=1&rp=1&ru=%2Fta%2Fcoding-interviews&qru=%2Fta%2Fcoding-interviews%2Fquestion-ranking)
 
 #### Java实现
 
@@ -180,4 +178,45 @@ class Solution:
         if listNode is None:
             return []
         return self.printListFromTailToHead(listNode.next)+[listNode.val]
+```
+
+### 重建二叉树
+
+#### 题目描述
+
+输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。假设输入的前序遍历和中序遍历的结果中都不含重复的数字。例如输入前序遍历序列{1,2,4,7,3,5,6,8}和中序遍历序列{4,7,2,1,5,3,8,6}，则重建二叉树并返回。
+
+#### Java实现
+```
+public class Solution {
+    public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
+        TreeNode root = reConstructBinaryTree(pre,0,pre.length-1,in,0,in.length-1);
+        return root;    
+    }
+    private TreeNode reConstructBinaryTree(int [] pre,int startPre,int endPre,int [] in,int startIn,int endIn) {
+        if(startPre>endPre||startIn>endIn)
+            return null;
+        TreeNode root=new TreeNode(pre[startPre]);
+        for(int i=startIn;i<=endIn;i++)
+            if(in[i]==pre[startPre]){
+                root.left=reConstructBinaryTree(pre,startPre+1,startPre+i-startIn,in,startIn,i-1);
+                root.right=reConstructBinaryTree(pre,i-startIn+startPre+1,endPre,in,i+1,endIn);
+            }
+                  
+        return root;
+    }
+}
+```
+
+#### Python实现
+```
+class Solution:
+    def reConstructBinaryTree(self, pre, tin):
+        if not pre or not tin:
+            return None
+        root = TreeNode(pre.pop(0))
+        index = tin.index(root.val)
+        root.left = self.reConstructBinaryTree(pre, tin[:index])
+        root.right = self.reConstructBinaryTree(pre, tin[index + 1:])
+        return root
 ```
