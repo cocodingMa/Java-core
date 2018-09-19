@@ -21,6 +21,10 @@
         - [题目描述](#题目描述-2)
         - [Java实现](#java实现-3)
         - [Python实现](#python实现-3)
+    - [用两个栈实现队列](#用两个栈实现队列)
+        - [题目描述](#题目描述-3)
+        - [Java实现](#java实现-4)
+        - [Python实现](#python实现-4)
 
 <!-- /TOC -->
 
@@ -219,4 +223,18 @@ class Solution:
         root.left = self.reConstructBinaryTree(pre, tin[:index])
         root.right = self.reConstructBinaryTree(pre, tin[index + 1:])
         return root
+```
+
+### 用两个栈实现队列
+
+#### 题目描述
+
+用两个栈来实现一个队列，完成队列的Push和Pop操作。 队列中的元素为int类型。
+
+#### Java实现
+```
+```
+
+#### Python实现
+```
 ```
