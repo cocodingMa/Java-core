@@ -233,8 +233,47 @@ class Solution:
 
 #### Java实现
 ```
+public class Solution {
+    Stack<Integer> stack1 = new Stack<Integer>();
+    Stack<Integer> stack2 = new Stack<Integer>();
+     
+    public void push(int node) {
+        stack1.push(node);
+    }
+     
+    public int pop() {
+        if(stack1.empty()&&stack2.empty()){
+            throw new RuntimeException("Queue is empty!");
+        }
+        if(stack2.empty()){
+            while(!stack1.empty()){
+                stack2.push(stack1.pop());
+            }
+        }
+        return stack2.pop();
+    }
+}
 ```
 
 #### Python实现
 ```
+class Solution:
+    def __init__(self):
+        self.stackA = []
+        self.stackB = []
+         
+    def push(self, node):
+        # write code here
+        self.stackA.append(node)
+         
+    def pop(self):
+        # return xx
+        if self.stackB:
+            return self.stackB.pop()
+        elif not self.stackA:
+            return None
+        else:
+            while self.stackA:
+                self.stackB.append(self.stackA.pop())
+            return self.stackB.pop()
 ```
