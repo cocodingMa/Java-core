@@ -29,6 +29,10 @@
         - [题目描述](#题目描述-4)
         - [Java实现](#java实现-5)
         - [Python实现](#python实现-5)
+    - [斐波那契数列](#斐波那契数列)
+        - [题目描述](#题目描述-5)
+        - [Java实现](#java实现-6)
+        - [Python实现](#python实现-6)
 
 <!-- /TOC -->
 
@@ -174,12 +178,6 @@ public class Solution {
 #### Python实现
 
 ```
-# -*- coding:utf-8 -*-
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
- 
 class Solution:
     def printListFromTailToHead(self, listNode):
         # write code here
@@ -267,11 +265,9 @@ class Solution:
         self.stackB = []
          
     def push(self, node):
-        # write code here
         self.stackA.append(node)
          
     def pop(self):
-        # return xx
         if self.stackB:
             return self.stackB.pop()
         elif not self.stackA:
@@ -312,7 +308,6 @@ public class Solution {
 ```
 class Solution:
     def minNumberInRotateArray(self, rotateArray):
-        # write code here
         length = len(rotateArray)
         if length == 0:
            return 0
@@ -328,4 +323,42 @@ class Solution:
                 else:
                     left = mid+1
             return rotateArray[i]
+```
+
+### 斐波那契数列
+
+#### 题目描述
+
+大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。n<=39 
+
+#### Java实现
+```
+public class Solution {
+    public int Fibonacci(int n) {
+        int preNum=1;
+        int prePreNum=0;
+        int result=0;
+        if(n==0)
+            return 0;
+        if(n==1)
+            return 1;
+        for(int i=2;i<=n;i++){
+            result=preNum+prePreNum;
+            prePreNum=preNum;
+            preNum=result;
+        }
+        return result;
+ 
+    }
+}
+```
+
+#### Python实现
+```
+class Solution:
+    def Fibonacci(self, n):
+        res=[0,1,1,2]
+        while len(res)<=n:
+            res.append(res[-1]+res[-2])
+        return res[n]
 ```
