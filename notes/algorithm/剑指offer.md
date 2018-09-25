@@ -33,6 +33,10 @@
         - [题目描述](#题目描述-5)
         - [Java实现](#java实现-6)
         - [Python实现](#python实现-6)
+    - [跳台阶](#跳台阶)
+        - [题目描述](#题目描述-6)
+        - [Java实现](#java实现-7)
+        - [Python实现](#python实现-7)
 
 <!-- /TOC -->
 
@@ -358,6 +362,40 @@ public class Solution {
 class Solution:
     def Fibonacci(self, n):
         res=[0,1,1,2]
+        while len(res)<=n:
+            res.append(res[-1]+res[-2])
+        return res[n]
+```
+
+### 跳台阶
+
+#### 题目描述
+
+一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。
+
+#### Java实现
+```
+int jumpFloor(int number) {
+        if(number<2)
+            return number;
+        int f1=1;
+        int f2=0;
+        int f=0;
+        for(int i=1;i<=number;++i)
+            {
+            f=f1+f2;
+            f2=f1;
+            f1=f;
+        }
+        return s;
+```
+
+#### Python实现
+```
+class Solution:
+    def jumpFloor(self, n):
+        # write code here
+        res=[1,1,2]
         while len(res)<=n:
             res.append(res[-1]+res[-2])
         return res[n]
