@@ -27,14 +27,14 @@ def param(tId):
     hl.update((textmod+'').encode(encoding='utf-8'))
     encrypt = hl.hexdigest()
     textmod = {'operatorId': '', 'productid': '', 't_id': tId, 'encrypt': encrypt}
-    print(textmod)
+    #print(textmod)
     return textmod
 
 # 发送请求
 def res(depositId):
     url=''
     response = requests.get(url, params=param(depositId))
-    print(response.url)
+    #print(response.url)
     if response.status_code == 200:
         try:
             content = response.content
@@ -50,7 +50,7 @@ def do_more():
     data = load_data()
     record_log(data)
     for i in data:
-        res(str(int(i)))
+        res(str(i))
 
 if __name__ == '__main__':
 
