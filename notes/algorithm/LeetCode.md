@@ -147,18 +147,20 @@ Explanation: There is no common prefix among the input strings.
 
 #### Python代码
 ```
-if len(strs) == 0:
-        return ''
-    lens = [len(str) for str in strs]
-    min_len = min(lens)
-    result = ''
+class Solution:
+    def longestCommonPrefix(self, strs):
+        if len(strs) == 0:
+            return ''
+        lens = [len(str) for str in strs]
+        min_len = min(lens)
+        result = ''
     
-    for i in range(1, min_len+1):
-        prefix = strs[0][:i]
-        for s in strs:             
-            if s[:i] != prefix:
-                return result
-        result = prefix
+        for i in range(1, min_len+1):
+            prefix = strs[0][:i]
+            for s in strs:             
+                if s[:i] != prefix:
+                    return result
+            result = prefix
         
-    return result
+        return result
 ```
