@@ -11,6 +11,12 @@
     - [Reverse Integer](#reverse-integer)
         - [题目描述](#题目描述-1)
         - [Python代码](#python代码-1)
+    - [Palindrome Number](#palindrome-number)
+        - [题目描述](#题目描述-2)
+        - [Python代码](#python代码-2)
+    - [Palindrome Number](#palindrome-number-1)
+        - [题目描述](#题目描述-3)
+        - [Python代码](#python代码-3)
 
 <!-- /TOC -->
 
@@ -79,4 +85,80 @@ class Solution:
             rev = rev*10 + x%10
             x = x//10
         return int(rev)
+```
+
+### Palindrome Number
+
+#### 题目描述
+
+[Palindrome Number](https://leetcode.com/problems/palindrome-number/description/)
+
+Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+
+```
+Example 1:
+
+Input: 121
+Output: true
+Example 2:
+
+Input: -121
+Output: false
+Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+Example 3:
+
+Input: 10
+Output: false
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+```
+#### Python代码
+```
+class Solution:
+    def isPalindrome(self, x):
+        if x < 0 or (x != 0 and x%10 == 0):
+            return False
+        rev = 0
+        while x > rev:
+            rev = rev*10 + x%10
+            x = x//10
+        return rev == x or x == rev//10
+```
+
+### Palindrome Number
+
+#### 题目描述
+[Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/description/)
+
+Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string "".
+
+```
+Example 1:
+
+Input: ["flower","flow","flight"]
+Output: "fl"
+Example 2:
+
+Input: ["dog","racecar","car"]
+Output: ""
+Explanation: There is no common prefix among the input strings.
+```
+
+#### Python代码
+```
+if len(strs) == 0:
+        return ''
+    lens = [len(str) for str in strs]
+    min_len = min(lens)
+    result = ''
+    
+    for i in range(1, min_len+1):
+        prefix = strs[0][:i]
+        for s in strs:             
+            if s[:i] != prefix:
+                return result
+        result = prefix
+        
+    return result
 ```
