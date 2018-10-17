@@ -17,6 +17,9 @@
     - [Palindrome Number](#palindrome-number-1)
         - [题目描述](#题目描述-3)
         - [Python代码](#python代码-3)
+    - [Valid Parentheses](#valid-parentheses)
+        - [题目描述](#题目描述-4)
+        - [Python代码](#python代码-4)
 
 <!-- /TOC -->
 
@@ -163,4 +166,58 @@ class Solution:
             result = prefix
         
         return result
+```
+
+### Valid Parentheses
+
+#### 题目描述
+
+[Valid Parentheses](https://leetcode.com/problems/valid-parentheses/description/)
+
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Note that an empty string is also considered valid.
+
+```
+Example 1:
+
+Input: "()"
+Output: true
+Example 2:
+
+Input: "()[]{}"
+Output: true
+Example 3:
+
+Input: "(]"
+Output: false
+Example 4:
+
+Input: "([)]"
+Output: false
+Example 5:
+
+Input: "{[]}"
+Output: true
+```
+#### Python代码
+
+```
+class Solution:
+    def isValid(self, s):
+        stack = []
+        dict = {"]":"[", "}":"{", ")":"("}
+        for char in s:
+            if char in dict.values():
+                stack.append(char)
+            elif char in dict.keys():
+                if stack == [] or dict[char] != stack.pop():
+                    return False
+            else:
+                return False
+        return stack == []
 ```
