@@ -6,6 +6,7 @@
 
 - [实用sql](#实用sql)
     - [JOIN  条件](#join--条件)
+    - [EXCEPT 交集](#except-交集)
 
 <!-- /TOC -->
 
@@ -21,4 +22,28 @@ where 1=1
 and (#{imei} is null or xe.imei = #{imei})
 and (#{mobile} is null or xm.number = #{mobile})
 order by xm.call_time DESC
+```
+
+### EXCEPT 交集
+
+```
+SELECT
+	COUNT (*)
+FROM
+	(SELECT
+			loan_app_id
+		FROM
+			t_loan_app_status_log
+		WHERE
+			create_time < #{ startTime }
+		AND new_status = #{ status }
+		EXCEPT
+			SELECT
+				loan_app_id
+			FROM
+				t_loan_app_status_log
+			WHERE
+				create_time < #{ startTime }
+			AND old_status =#{ status }
+	) A;
 ```
