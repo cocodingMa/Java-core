@@ -26,6 +26,12 @@
     - [Remove Duplicates from Sorted Array](#remove-duplicates-from-sorted-array)
         - [题目描述](#题目描述-6)
         - [Python代码](#python代码-6)
+    - [Remove Element](#remove-element)
+        - [题目描述](#题目描述-7)
+        - [Python代码](#python代码-7)
+    - [Implement strStr()](#implement-strstr)
+        - [题目描述](#题目描述-8)
+        - [Python代码](#python代码-8)
 
 <!-- /TOC -->
 
@@ -294,5 +300,88 @@ class Solution:
             if nums[i] != nums[newRes]:
                 newRes += 1
                 nums[newRes] = nums[i]
-        return nums + 1
+        return newRes + 1
+```
+
+### Remove Element
+
+#### 题目描述
+
+[Remove Element](https://leetcode.com/problems/remove-element/)
+
+Given an array nums and a value val, remove all instances of that value in-place and return the new length.
+
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+
+```
+Example 1:
+
+Given nums = [3,2,2,3], val = 3,
+
+Your function should return length = 2, with the first two elements of nums being 2.
+
+It doesn't matter what you leave beyond the returned length.
+Example 2:
+
+Given nums = [0,1,2,2,3,0,4,2], val = 2,
+
+Your function should return length = 5, with the first five elements of nums containing 0, 1, 3, 0, and 4.
+
+Note that the order of those five elements can be arbitrary.
+
+It doesn't matter what values are set beyond the returned length.
+```
+
+####Python代码
+```
+class Solution:
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        begin=0
+        for i in range(0, len(nums)):
+            if nums[i] != val:
+                nums[begin] = nums[i]
+                begin += 1
+        return begin
+```
+
+### Implement strStr()
+
+#### 题目描述
+
+[Implement strStr()](https://leetcode.com/problems/implement-strstr/)
+
+Implement strStr().
+
+Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+```
+Example 1:
+
+Input: haystack = "hello", needle = "ll"
+Output: 2
+Example 2:
+
+Input: haystack = "aaaaa", needle = "bba"
+Output: -1
+```
+
+#### Python代码
+```
+class Solution:
+    def strStr(self, haystack, needle):
+        """
+        :type haystack: str
+        :type needle: str
+        :rtype: int
+        """
+        for i in range(len(haystack) - len(needle)+1):
+            if haystack[i:i+len(needle)] == needle:
+                return i
+        return -1
 ```
