@@ -32,6 +32,12 @@
     - [Implement strStr()](#implement-strstr)
         - [题目描述](#题目描述-8)
         - [Python代码](#python代码-8)
+    - [Search Insert Position](#search-insert-position)
+        - [题目描述](#题目描述-9)
+        - [Python代码](#python代码-9)
+    - [Maximum Subarray](#maximum-subarray)
+        - [题目描述](#题目描述-10)
+        - [Python代码](#python代码-10)
 
 <!-- /TOC -->
 
@@ -384,4 +390,81 @@ class Solution:
             if haystack[i:i+len(needle)] == needle:
                 return i
         return -1
+```
+
+### Search Insert Position
+
+#### 题目描述
+
+[Search Insert Position](https://leetcode.com/problems/search-insert-position/)
+
+Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+You may assume no duplicates in the array.
+```
+Example 1:
+
+Input: [1,3,5,6], 5
+Output: 2
+Example 2:
+
+Input: [1,3,5,6], 2
+Output: 1
+Example 3:
+
+Input: [1,3,5,6], 7
+Output: 4
+Example 4:
+
+Input: [1,3,5,6], 0
+Output: 0
+```
+
+#### Python代码
+```
+class Solution:
+    def searchInsert(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        for i in range(0, len(nums)):
+            if nums[i] >= target:
+                return i
+        return len(nums)
+```
+
+### Maximum Subarray
+
+#### 题目描述
+
+[Maximum Subarray](https://leetcode.com/problems/maximum-subarray/)
+
+Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+```
+Example:
+
+Input: [-2,1,-3,4,-1,2,1,-5,4],
+Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
+```
+
+#### Python代码
+```
+class Solution:
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        sum = 0
+        res = 0
+        for i in range(0, len(nums)):
+            res = res + nums[i]
+            if res < 0:
+                res = 0
+            if res > sum:
+                sum = res
+        return sum
 ```
