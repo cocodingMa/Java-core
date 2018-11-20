@@ -41,6 +41,9 @@
     - [Add Binary](#add-binary)
         - [题目描述](#题目描述-11)
         - [Python代码](#python代码-11)
+    - [Climbing Stairs](#climbing-stairs)
+        - [题目描述](#题目描述-12)
+        - [Python代码](#python代码-12)
 
 <!-- /TOC -->
 
@@ -505,4 +508,37 @@ class Solution:
                 return self.addBinary(a[0:-1],b[0:-1])+'0'
             else:
                 return self.addBinary(a[0:-1],b[0:-1])+'1'
+```
+
+### Climbing Stairs
+
+#### 题目描述
+
+[Climbing Stairs]()
+
+You are climbing a stair case. It takes n steps to reach to the top.
+
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+Note: Given n will be a positive integer.
+```
+Example 1:
+
+Input: 2
+Output: 2
+
+
+Example 2:
+
+Input: 3
+Output: 3
+```
+#### Python代码
+```
+class Solution:
+    def climbStairs(self, n):
+        a = b = 1
+        for _ in range(n):
+            a, b = b, a + b
+        return a
 ```
