@@ -44,6 +44,12 @@
     - [Climbing Stairs](#climbing-stairs)
         - [题目描述](#题目描述-12)
         - [Python代码](#python代码-12)
+    - [Remove Duplicates from Sorted List](#remove-duplicates-from-sorted-list)
+        - [题目描述](#题目描述-13)
+        - [Python代码](#python代码-13)
+    - [Same Tree](#same-tree)
+        - [题目描述](#题目描述-14)
+        - [Python代码](#python代码-14)
 
 <!-- /TOC -->
 
@@ -514,7 +520,7 @@ class Solution:
 
 #### 题目描述
 
-[Climbing Stairs]()
+[Climbing Stairs](https://leetcode.com/problems/climbing-stairs/submissions/)
 
 You are climbing a stair case. It takes n steps to reach to the top.
 
@@ -541,4 +547,138 @@ class Solution:
         for _ in range(n):
             a, b = b, a + b
         return a
+```
+>参考
+
+```
+Ruby (60 ms)
+
+def climb_stairs(n)
+    a = b = 1
+    n.times { a, b = b, a+b }
+    a
+end
+C++ (0 ms)
+
+int climbStairs(int n) {
+    int a = 1, b = 1;
+    while (n--)
+        a = (b += a) - a;
+    return a;
+}
+Java (208 ms)
+
+public int climbStairs(int n) {
+    int a = 1, b = 1;
+    while (n-- > 0)
+        a = (b += a) - a;
+    return a;
+}
+C (0 ms)
+
+int climbStairs(int n) {
+    int a = 1, b = 1;
+    while (n--)
+        a = (b += a) - a;
+    return a;
+}
+C# (48 ms)
+
+public int ClimbStairs(int n) {
+    int a = 1, b = 1;
+    while (n-- > 0)
+        a = (b += a) - a;
+    return a;
+}
+Javascript (116 ms)
+
+var climbStairs = function(n) {
+    a = b = 1
+    while (n--)
+        a = (b += a) - a
+    return a
+};
+```
+
+### Remove Duplicates from Sorted List
+
+#### 题目描述
+
+[Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/)
+
+Given a sorted linked list, delete all duplicates such that each element appear only once.
+```
+Example 1:
+
+Input: 1->1->2
+Output: 1->2
+Example 2:
+
+Input: 1->1->2->3->3
+Output: 1->2->3
+```
+#### Python代码
+```
+class Solution:
+    def deleteDuplicates(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if not head or not head.next:
+            return head
+        head.next = self.deleteDuplicates(head.next)
+        return (head.val == head.next.val) and head.next or head
+```
+
+### Same Tree
+
+#### 题目描述
+
+[Same Tree](https://leetcode.com/problems/same-tree/)
+
+Given two binary trees, write a function to check if they are the same or not.
+
+Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
+```
+Example 1:
+
+Input:     1         1
+          / \       / \
+         2   3     2   3
+
+        [1,2,3],   [1,2,3]
+
+Output: true
+Example 2:
+
+Input:     1         1
+          /           \
+         2             2
+
+        [1,2],     [1,null,2]
+
+Output: false
+Example 3:
+
+Input:     1         1
+          / \       / \
+         2   1     1   2
+
+        [1,2,1],   [1,1,2]
+
+Output: false
+```
+#### Python代码
+```
+class Solution:
+    def isSameTree(self, p, q):
+        """
+        :type p: TreeNode
+        :type q: TreeNode
+        :rtype: bool
+        """
+        if p and q:
+            return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+        return p is q
 ```
