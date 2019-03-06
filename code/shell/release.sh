@@ -1,5 +1,6 @@
 #! /bin/sh
 # chkconfig: - 85 1
+# 注意要在linux下编写，否则易出错
 echo "hello!!! this is begining!!"
 HOST=$1
 BRANCH=$2
