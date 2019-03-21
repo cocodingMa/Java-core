@@ -50,6 +50,12 @@
     - [Same Tree](#same-tree)
         - [题目描述](#题目描述-14)
         - [Python代码](#python代码-14)
+    - [Swap Nodes in Pairs](#swap-nodes-in-pairs)
+        - [题目描述](#题目描述-15)
+        - [Python代码](#python代码-15)
+    - [Search in Rotated Sorted Array](#search-in-rotated-sorted-array)
+        - [题目描述](#题目描述-16)
+        - [Python代码](#python代码-16)
 
 <!-- /TOC -->
 
@@ -681,4 +687,90 @@ class Solution:
         if p and q:
             return p.val == q.val and self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
         return p is q
+```
+
+### Swap Nodes in Pairs
+
+#### 题目描述
+
+[Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/)
+
+Given a linked list, swap every two adjacent nodes and return its head.
+
+You may not modify the values in the list's nodes, only nodes itself may be changed.
+
+```
+Example:
+
+Given 1->2->3->4, you should return the list as 2->1->4->3.
+```
+
+#### Python代码
+
+```
+class Solution:
+    def swapPairs(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return head
+        
+        next = head.next
+        head.next = self.swapPairs(head.next.next)
+        next.next = head
+        return next
+```
+
+### Search in Rotated Sorted Array
+
+#### 题目描述
+
+[Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+
+(i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+
+You are given a target value to search. If found in the array return its index, otherwise return -1.
+
+You may assume no duplicate exists in the array.
+
+Your algorithm's runtime complexity must be in the order of O(log n).
+
+```
+Example 1:
+
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+Example 2:
+
+Input: nums = [4,5,6,7,0,1,2], target = 3
+Output: -1
+```
+
+#### Python代码
+```
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        
+        if not nums:
+            return -1
+
+        low, high = 0, len(nums) - 1
+
+        while low <= high:
+            mid = (low + high) // 2
+            if target==nums[mid]:
+                return mid
+
+            if nums[low]<=nums[mid]:
+                if nums[low] <= target <= nums[mid]:
+                    high = mid - 1
+                else:
+                    low = mid + 1
+            else:
+                if nums[mid] <= target <= nums[high]:
+                    low = mid + 1
+                else:
+                    high = mid - 1
+
+        return -1
 ```
