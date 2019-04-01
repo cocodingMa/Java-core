@@ -1,19 +1,21 @@
 ## welcome to cocoding !!!
 
 
-### :pencil2: 数据结构和算法
+### 数据结构和算法
 
-- [剑指 Offer 题解](./notes/algorithm/%E5%89%91%E6%8C%87offer.md)
+- [剑指 Offer 题解](./notes/algorithm/offer.md)
 
   使用Java和Python两种实现方式，代码大多数为最优解
 
-### :cloud: 计算机网络
+### 计算机网络
 
-### :computer: 操作系统
+### 操作系统
 
-### :floppy_disk: 数据库
+[生产者和消费者Python实现](./tree/master/code/python/get/producer_and_consumer.py)
 
-### :bulb: 分布式
+### 数据库
+
+### 分布式
 
 ### Spring
 
@@ -25,5 +27,9 @@
 
 ### 缓存
 
-[LRU](./code/java/LRUCache.java)
+[缓存淘汰策略LRU实现，时间复杂度O(1)](./code/java/LRUCache.java)
+
+### Linux
+
+[可用于线上发布的Shell脚本](./blob/master/code/shell/release.sh)
 
