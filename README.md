@@ -7,7 +7,9 @@
 
   使用Java和Python两种实现方式，代码大多数为最优解
 
-  [红包算法](./code/java/RedPackage.java)
+- [红包算法](./code/java/RedPackage.java)
+
+- [多线程打印ABC]((./code/java/printABC/Test.java))
   
 ### 缓存
 
