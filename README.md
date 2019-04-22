@@ -9,7 +9,7 @@
 
 - [红包算法](./code/java/RedPackage.java)
 
-- [多线程打印ABC]((./code/java/printABC/Test.java))
+- [多线程打印ABC](./code/java/printABC/Test.java)
   
 ### 缓存
 
