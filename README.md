@@ -39,6 +39,9 @@
 
 ### MQ
 
+### 论文
+[Cuckoo Filter: Practically Better Than Bloom](https://dl.acm.org/citation.cfm?id=2674994)
+
 
 
 
